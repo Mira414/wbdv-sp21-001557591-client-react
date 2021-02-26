@@ -1,13 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import '@fortawesome/fontawesome-free/css/all.min.css'
 import './index.css';
-import App from './App';
+import CourseManager from "./component/course-manager";
+import CourseEditor from "./component/course-editor";
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  // <React.StrictMode>
+  //   <App />
+  // </React.StrictMode>,
+    <div>
+       <CourseManager />
+       <CourseEditor />
+    </div>,
   document.getElementById('root')
 );
 

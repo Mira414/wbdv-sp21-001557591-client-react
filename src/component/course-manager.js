@@ -1,6 +1,9 @@
 import React from "react";
+import {Route} from "react-router-dom"
+import {Link} from "react-router-dom"
 import CourseTable from "./course-table";
 import CourseGrid from "./course-grid";
+import CourseEditor from "./course-editor";
 
 export default class CourseManager extends React.Component {
     state = {
@@ -13,7 +16,6 @@ export default class CourseManager extends React.Component {
     }
 
     addCourses= ()=>{
-        alert("add")
         let newCourse = {
             title: "new course",
             owner: "me",
@@ -32,10 +34,26 @@ export default class CourseManager extends React.Component {
     render() {
         return (
             <div className="App">
-                manager
-                <button onClick={this.addCourses}></button>
-                <CourseTable deleteCourse = {this.deleteCourse} courses= {this.state.courses}/>
-                <CourseGrid deleteCourse = {this.deleteCourse} courses = {this.state.courses}/>
+                <div className="row">
+                    <h3 className="col-6">Course Manager</h3>
+                    <button onClick={this.addCourses} className="col-2">Add</button>
+                </div>
+                <Route path="/course/table">
+                    <CourseTable
+                        deleteCourse = {this.deleteCourse}
+                        courses= {this.state.courses}/>
+                </Route>
+                <Route path="/course/grid">
+                    <CourseGrid
+                        deleteCourse = {this.deleteCourse}
+                        courses = {this.state.courses}/>
+                </Route>
+                <Route path="/course/editor"
+                       render={(props)=> {
+                           console.log(props)
+                           return <CourseEditor props={props}/>}}>
+
+                </Route>
             </div>
         )
     }

@@ -11,3 +11,28 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.wm-sticky-Nav-Bar{
+  background-color: #5087ed;
+  position:fixed;
+  padding: 10px;
+  width: 100%;
+  z-index: 0;
+}
+
+.wm-margin{
+  margin-left: 100px;
+}
+
+.wm-course-manage-size{
+  font-size: 20px;
+  margin-left: 15px;
+}
+
+.wm-red{
+  color: red;
+}
+
+.wm-white{
+  color: white;
+}

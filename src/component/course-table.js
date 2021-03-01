@@ -3,6 +3,7 @@ import CourseRow from "./course-row";
 import {Link} from "react-router-dom";
 
 export default class CourseTable extends React.Component {
+
     constructor(props) {
         super(props);
     }
@@ -16,12 +17,15 @@ export default class CourseTable extends React.Component {
                 <table className="table">
                     <tbody>
                     {
-                        this.props.courses.map((course,ind)=>
+                        // ()=>{console.log(this.props)
+                        this.props.courses.map((course)=>
                             <CourseRow
                                 deleteCourse = {this.props.deleteCourse}
-                                key = {ind}
+                                updateCourse = {this.props.updateCourse}
+                                // key = {ind}
                                 course = {course}
-                                />)
+                            />)
+                        // }
                     }
                     </tbody>
                 </table>

@@ -8,5 +8,4 @@ let someObject = {
         {a: 123, b: 234}, {a: 321, b: 432}]
 }
 
-console.log(someObject.anObjectProperty
-    .anotherArrayProp[2])
+console.log(someObject.anObjectProperty.anotherArrayProp[2])

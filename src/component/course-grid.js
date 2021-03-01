@@ -6,7 +6,7 @@ const CourseGrid = ({deleteCourse, courses}) =>{
     return (
             <div className="container">
                 <Link to="/course/table">
-                    <i className="fas fa-list"></i>
+                    <i className="float-right fas fa-list"></i>
                 </Link>
                 <div className="row">
                         {courses.map(course =>

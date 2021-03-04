@@ -1,0 +1,23 @@
+.wm-wrapper{
+    position: relative;
+    width: 150px;
+}
+
+.wm-operation{
+    position: absolute;
+    top:0px;
+    right: 0px;
+}
+
+.wm-card{
+    height: 380px;
+    margin-bottom: 30px;
+    display: block;
+}
+
+.wm-edit{
+    position: absolute;
+    bottom: 0;
+    right:0;
+}
+

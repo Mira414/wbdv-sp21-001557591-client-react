@@ -1,12 +1,13 @@
 import React from "react";
-import {Route} from "react-router-dom"
-import {Link} from "react-router-dom"
-import CourseTable from "./course-table";
-import CourseGrid from "./course-grid";
-import CourseEditor from "./course-editor";
+import {Route,Link} from "react-router-dom"
+import CourseTable from "./course-table/course-table";
+import CourseGrid from "./course-grid/course-grid";
+import CourseEditor from "./course-editor/course-editor";
 import CourseService from "../services/course-service"
+import CourseNavBar from "./course-nav-bar";
 
 export default class CourseManager extends React.Component {
+
     state = {
         courses : []
     }
@@ -18,18 +19,14 @@ export default class CourseManager extends React.Component {
             )
         )
 
-    addCourses= ()=>{
-        let newCourse = {
-            title: "new course",
-            owner: "me",
-            modified: "1-37-01"
-        }
+
+    addCourse= (newCourse)=>{
         CourseService.createCourse(newCourse).then(
             status=>
                 this.setState((preState)=>{
-                    let nextState = {}
-                    preState.courses.push(newCourse)
-                    nextState = {...preState}
+                    console.log("manager add course")
+                    let nextState = {...preState}
+                    nextState.courses.push(newCourse)
                     return nextState
                 })
             )
@@ -67,30 +64,38 @@ export default class CourseManager extends React.Component {
         )
     }
 
+    deleteAllCourse= ()=> {
+        console.log("manager-del all course::before=" + this.state.courses.length)
+        let newCourses = this.state.courses.slice(1,780)
+        for(let i=0;i<newCourses.length;i++){
+            let id = newCourses[i]._id
+            CourseService.deleteCourse(id).then()
+        }
+        console.log("manager-del all course::after=" + this.state.courses.length)
+    }
+
     render() {
         return (
-            <div className="App">
-
-                <div className="row">
-                    <h3 className="col-6">Course Manager</h3>
-                    <button onClick={this.addCourses} className="col-2">Add</button>
-                </div>
-                <Route path="/course/table">
+            <div>
+                <Route path="/courses/table">
+                    <CourseNavBar addCourse={this.addCourse}/>
                     <CourseTable
                         deleteCourse = {this.deleteCourse}
                         updateCourse = {this.updateCourse}
+                        addCourse = {this.addCourse}
                         courses= {this.state.courses}/>
                 </Route>
-                <Route path="/course/grid">
+                <Route path="/courses/grid" >
+                    <CourseNavBar addCourse={this.addCourse}/>
                     <CourseGrid
                         deleteCourse = {this.deleteCourse}
                         updateCourse = {this.updateCourse}
+                        addCourse = {this.addCourse}
                         courses = {this.state.courses}/>
                 </Route>
-                <Route path="/course/editor"
+                <Route path="/courses/editor"
                        render={(props)=> {
                            return <CourseEditor props={props}/>}}>
-
                 </Route>
             </div>
         )

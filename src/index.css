@@ -1,27 +1,15 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
 
 .wm-sticky-Nav-Bar{
   background-color: #5087ed;
   position:fixed;
   padding: 10px;
   width: 100%;
-  z-index: 0;
+  z-index: 2;
 }
 
 .wm-margin{
-  margin-left: 100px;
+  /*margin-left: 80px;*/
+  text-align: right;
 }
 
 .wm-course-manage-size{
@@ -36,3 +24,32 @@ code {
 .wm-white{
   color: white;
 }
+
+row{
+  width:100%
+}
+
+.fa-stack{
+  vertical-align: top
+}
+
+.wm-container{
+  padding-top: 58px;
+}
+
+thead{
+  width: 100%;
+}
+
+.fa-folder{
+  padding-right: 5px;
+}
+
+.fa-sort-alpha-up{
+  padding-right: 5px;
+}
+
+.fas{
+  line-height: unset;
+}
+

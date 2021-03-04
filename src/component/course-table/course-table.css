@@ -1,0 +1,14 @@
+.wm-floating-parent{
+    vertical-align: top;
+    position: relative;
+}
+
+.wm-floating-child{
+    position:absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.wm-icon-weight{
+    font-weight: 100;
+}

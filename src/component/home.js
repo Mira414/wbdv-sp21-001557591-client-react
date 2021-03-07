@@ -14,5 +14,11 @@ export default () =>
             <Link to="/courses/editor" className="list-group-item">
                 Course Editor
             </Link>
+            <Link to="/counter/react" className="list-group-item">
+                Counter React
+            </Link>
+            <Link to="/counter/redux" className="list-group-item">
+                Counter Redux
+            </Link>
         </div>
     </div>

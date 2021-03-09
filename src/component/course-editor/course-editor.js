@@ -3,6 +3,7 @@ import "./course-editor.css"
 import {combineReducers, createStore} from "redux";
 import moduleReducer from "../../reducer/module-reducer";
 import {Provider} from "react-redux";
+import {useParams} from "react-router-dom"
 import ModuleList from "./module-list";
 import LessonTab from "./lesson-tab";
 import lessonReducer from "../../reducer/lesson-reducer";
@@ -15,6 +16,9 @@ const reducers = combineReducers({
 const store = createStore(reducers)
 
 const CourseEditor = ({props}) => {
+
+    const {courseId} = useParams()
+
     return <Provider store={store}>
         <div>
             <nav className="navbar navbar-expand-lg wm-Nav-Bar">
@@ -25,7 +29,7 @@ const CourseEditor = ({props}) => {
                         <i className="fa fa-times fa-2x wm-light-font-weight"></i>
                     </div>
                     <div className="col-md-2 wm-h5">
-                        CS5610 Web Dev
+                        CS5610 Web Dev {console.log({courseId})}
                     </div>
                     <LessonTab />
                 </div>

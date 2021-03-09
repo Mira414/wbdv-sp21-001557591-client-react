@@ -1,11 +1,16 @@
 import React from "react"
 import {useState} from "react"
+import {Link, useParams} from "react-router-dom";
 
 const EditableItem =(
-    {item={title:"defaultTitle", id:123},
+    {
+        to="/to/somewhere",
+        item={title:"defaultTitle", id:123},
         deleteItem,
         updateItem}
     )=>{
+
+    // const {courseId} = useParams()
 
     const [editing, setEditing] = useState(false)
     const [cachedItem, setCachedItem] =useState(item)
@@ -13,9 +18,11 @@ const EditableItem =(
     return <>
         {!editing &&
         <>
-            <a className="list-group-item wm-group-item">
+            <Link
+                to={to}
+                className="list-group-item wm-group-item">
                 {item.title}
-            </a>
+            </Link>
             <i onClick={()=>setEditing(true)} className="fas fa-edit float-right"></i>
         </>}
 
@@ -23,7 +30,7 @@ const EditableItem =(
         <>
             <input value={cachedItem.title}
                    onChange={event => setCachedItem(
-                       {...cachedItem, title: event.target.value}
+                       {...item, title: event.target.value}
                        )
                    }/>
             <i onClick={()=>{

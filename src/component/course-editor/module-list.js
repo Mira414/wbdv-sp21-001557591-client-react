@@ -1,17 +1,30 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {connect} from "react-redux"
 import EditableItem from "./editable-item";
+import {useParams} from "react-router-dom";
+import ModuleService from "../../services/module-service"
 
 const ModuleList = (
-    {myModules=[],
+    {myModules,
         createModule=()=>alert("defa"),
         deleteModule,
-        updateModule})=>{
+        updateModule,
+        findModulesForCourse
+    })=>{
+
+    const {courseId} = useParams()
+
+    useEffect(()=> {
+        findModulesForCourse(courseId)
+        console.log("effect modules=" +myModules.length)
+    },[])
+
     return <div>
         <ul className="list-group">
             {myModules.map((module)=>
                 <li>
                     <EditableItem
+                        to={`/courses/editor/${courseId}/${module._id}`}
                         item={module}
                         key={module.id}
                         deleteItem={deleteModule}
@@ -23,7 +36,7 @@ const ModuleList = (
                    href="#"
                    tabIndex="-1">
                     <i
-                        onClick={createModule}
+                        onClick={()=>createModule(courseId,{title:"new Module"})}
                         className="fas fa-plus text-white float-right"></i>
                 </a>
             </li>
@@ -39,13 +52,24 @@ const stpm = (state)=>{
 
 const dtmp = (dispatch)=>{
     return {
-        createModule : ()=>
-            dispatch({type: "CREATE_MODULE"}),
-        deleteModule : (item)=>
-            dispatch({type: "DELETE_MODULE", moduleToDelete: item}),
-        updateModule : (item)=>
-            dispatch({type: "UPDATE_MODULE", moduleToUpdate: item})
-
+        deleteModule : (module)=>
+            ModuleService.deleteModule(module._id).then(
+                dispatch({type: "DELETE_MODULE", moduleIdToDelete: module._id}),
+            ),
+        updateModule : (module)=>
+            ModuleService.updateModule(module._id, module).then(status=>{
+                dispatch({type: "UPDATE_MODULE", moduleToUpdate: module})
+            }),
+        findModulesForCourse : (courseId)=>{
+            ModuleService.findModulesForCourse(courseId)
+                .then(acturalModules=> {
+                    dispatch({type: "FIND_MODULES_FOR_COURSE", modules: acturalModules})
+                    // alert("dtmp " + acturalModules.length)
+                })
+        },
+        createModule : (courseId, module) =>
+            ModuleService.createModuleForCourse(courseId, module)
+                .then(newModule=>dispatch({type: "CREATE_MODULE", module: newModule}))
     }
 }
 

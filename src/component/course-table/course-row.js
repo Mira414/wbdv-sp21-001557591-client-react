@@ -17,7 +17,9 @@ const CourseRow = ({updateCourse, deleteCourse, course})=>{
     return (
         <tr className="">
             <td className="">
-                {!editing && <Link to="/courses/editor"> {course.title}</Link>}
+                {!editing &&
+                <Link
+                    to={`/courses/editor/${course._id}`}> {course.title}</Link>}
                 {editing &&
                 <input
                     value={newTitle}

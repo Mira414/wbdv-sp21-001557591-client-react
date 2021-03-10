@@ -77,6 +77,8 @@ export default class CourseManager extends React.Component {
     render() {
         return (
             <div>
+                {/*<h4>course manager</h4>*/}
+                {/*<Route path="/courses/table">*/}
                 <Route path="/courses/table">
                     <CourseNavBar addCourse={this.addCourse}/>
                     <CourseTable
@@ -85,6 +87,7 @@ export default class CourseManager extends React.Component {
                         addCourse = {this.addCourse}
                         courses= {this.state.courses}/>
                 </Route>
+                {/*<Route path="/courses/grid" >*/}
                 <Route path="/courses/grid" >
                     <CourseNavBar addCourse={this.addCourse}/>
                     <CourseGrid
@@ -93,14 +96,18 @@ export default class CourseManager extends React.Component {
                         addCourse = {this.addCourse}
                         courses = {this.state.courses}/>
                 </Route>
-                <Route path={[
-                    "/courses/editor/:courseId",
-                    "/courses/editor/:courseId/:moduleId",
-                    "/courses/editor/:courseId/:moduleId/:lessonId"]}
-                       exact="true"
-                       render={(props)=> {
-                           return <CourseEditor props={props}/>}}>
-                </Route>
+                    {/*"/courses/editor/:courseId",*/}
+                    {/*"/courses/editor/:courseId/:moduleId",*/}
+                    {/*"/courses/editor/:courseId/:moduleId/:lessonId"]}*/}
+                {/*<Route path={[*/}
+                {/*    "/courses/:layout",*/}
+                {/*    "/courses/:layout/edit/:courseId",*/}
+                {/*    "/courses/:layout/edit/:courseId/:moduleId",*/}
+                {/*    "/courses/:layout/edit/:courseId/:moduleId/:lessonId",]}*/}
+                {/*       exact={true}*/}
+                {/*       render={(props)=> {*/}
+                {/*           return <CourseEditor props={props}/>}}>*/}
+                {/*</Route>*/}
             </div>
         )
     }

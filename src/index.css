@@ -53,3 +53,15 @@ thead{
   line-height: unset;
 }
 
+.list-group-item.active a{
+  color: white;
+}
+
+.nav-item.active{
+  background-color: #4891e4;
+}
+
+.nav-item.active a{
+  color: white;
+}
+

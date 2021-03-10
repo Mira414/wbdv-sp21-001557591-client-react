@@ -3,7 +3,7 @@ import "./course-editor.css"
 import {combineReducers, createStore} from "redux";
 import moduleReducer from "../../reducer/module-reducer";
 import {Provider} from "react-redux";
-import {useParams} from "react-router-dom"
+import {Link, useParams} from "react-router-dom"
 import ModuleList from "./module-list";
 import LessonTab from "./lesson-tab";
 import lessonReducer from "../../reducer/lesson-reducer";
@@ -15,21 +15,25 @@ const reducers = combineReducers({
 
 const store = createStore(reducers)
 
+
 const CourseEditor = ({props}) => {
 
-    const {courseId} = useParams()
+    const {courseId, layout} = useParams()
 
     return <Provider store={store}>
         <div>
             <nav className="navbar navbar-expand-lg wm-Nav-Bar">
-                <i onClick={()=>props.history.goBack()}
-                   className="fas fa-arrow-left text-white"></i>
+                {/*<i onClick={()=>props.history.goBack()}*/}
+                <Link to={`/courses/${layout}`}>
+                    <i className="fas fa-arrow-left text-white"></i>
+                </Link>
                 <div className="container-fluid">
                     <div className="col-md-1">
                         <i className="fa fa-times fa-2x wm-light-font-weight"></i>
                     </div>
                     <div className="col-md-2 wm-h5">
-                        CS5610 Web Dev {console.log({courseId})}
+                        CS5610 Web Dev
+                        {console.log({props})}
                     </div>
                     <LessonTab />
                 </div>

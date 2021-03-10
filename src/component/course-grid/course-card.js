@@ -47,7 +47,7 @@ const CourseCard = ({deleteCourse, updateCourse, course})=>{
                             onChange={event => setNewTitle(event.target.value)}></input>}
                     <p className="card-text">Some Description </p>
                     <Link
-                        to="/courses/editor"
+                        to={`/courses/grid/edit/${course._id}`}
                         className="btn btn-primary"> {course.title}</Link>
                     {!editing && <i onClick={() => setEditing(true)}
                                     className="fas fa-edit text-primary wm-edit"></i>}

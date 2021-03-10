@@ -20,10 +20,11 @@ const EditableItem =(
         <>
             <Link
                 to={to}
-                className="list-group-item wm-group-item">
+                className="">
                 {item.title}
             </Link>
-            <i onClick={()=>setEditing(true)} className="fas fa-edit float-right"></i>
+            <i onClick={()=>setEditing(true)}
+               className="fas fa-edit float-right"></i>
         </>}
 
         {editing &&

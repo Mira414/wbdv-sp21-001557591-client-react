@@ -35,6 +35,7 @@ export default class CourseTable extends React.Component {
                                 updateCourse = {this.props.updateCourse}
                                 key = {course._id}
                                 course = {course}
+                                // layout = "table"
                             />)
                     }
                     </tbody>

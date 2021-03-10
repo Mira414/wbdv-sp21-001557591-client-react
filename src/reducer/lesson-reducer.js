@@ -1,33 +1,32 @@
 const initState = {
     lessons:
-        [{title: "lesson 1", id: "1-1"},
-            {title: "lesson 2", id: "1-2"},
-            {title: "lesson 3", id: "1-3"}
-    ]
+        []
 }
 
 const lessonReducer =(preState=initState, action)=>{
     switch (action.type){
         case "DELETE_LESSON":
-            // alert("reducer del lesson " + action.lessonToDelete.id)
+            // alert("reducer del lesson " + action.lessonToDelete._id)
             return {...preState,
                 lessons: preState.lessons.filter(
-                    (lesson)=>lesson.id === action.lessonToDelete.id? false : true)
+                    (lesson)=>lesson._id === action.lessonToDelete._id? false : true)
             }
         case "CREATE_LESSON":
-            const newLesson = {title : "new lesson", id : 1234567}
             return {...preState,
-                lessons:[...preState.lessons,newLesson]}
+                lessons:[...preState.lessons,action.lesson]}
         case "UPDATE_LESSON":
-            // alert("reducer update lesson " + action.lessonToUpdate.id)
+            // console.log("reducer update lesson " + action.lessonToUpdate._id)
             return {...preState,
                 lessons: preState.lessons.map(
                     (lesson)=>{
-                        if (lesson.id === action.lessonToUpdate.id) return action.lessonToUpdate
+                        if (lesson._id === action.lessonToUpdate._id) return action.lessonToUpdate
                         else return lesson
                     })
             }
-        case "FIND_LESSON":
+        case "FIND_LESSONS_FOR_MODULE":
+            return {...preState,
+                lessons: action.modules
+            }
         default: return preState
     }
     return preState

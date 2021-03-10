@@ -16,7 +16,9 @@ const App = () =>{
             <Route path={["/courses/:layout/edit",
                         "/courses/:layout/edit/:courseId",
                         "/courses/:layout/edit/:courseId/:moduleId",
-                        "/courses/:layout/edit/:courseId/:moduleId/:lessonId",]}
+                        "/courses/:layout/edit/:courseId/:moduleId/:lessonId",
+                        "/courses/:layout/edit/:courseId/:moduleId/:lessonId/:topicId"
+            ]}
                    exact={true}
                    component={CourseEditor}></Route>
             <Route path="/counter/react" component={CounterReact}></Route>

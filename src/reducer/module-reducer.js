@@ -1,11 +1,15 @@
 
 const initState = {
-    modules : []
+    modules : [],
+    course : {}
 }
 
 const moduleReducer =(preState = initState, action)=>{
     let newState
     switch (action.type){
+        case "FIND_COURSE_BY_ID":
+            return {...preState,
+            course : action.course}
         case "FIND_MODULES_FOR_COURSE":
             return {...preState,
                 modules: action.modules}

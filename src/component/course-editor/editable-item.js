@@ -5,17 +5,15 @@ import {Link, useParams} from "react-router-dom";
 const EditableItem =(
     {
         to="/to/somewhere",
-        item={title:"defaultTitle", id:123},
+        item={title:"defaultTitle"},
         deleteItem,
         updateItem}
     )=>{
 
-    // const {courseId} = useParams()
-
     const [editing, setEditing] = useState(false)
     const [cachedItem, setCachedItem] =useState(item)
 
-    return <>
+    return <div className="nav-link">
         {!editing &&
         <>
             <Link
@@ -43,7 +41,7 @@ const EditableItem =(
             <i onClick={()=>deleteItem(item)}
                className="fas fa-times"></i>
         </>}
-    </>
+    </div>
 }
 
 export default EditableItem

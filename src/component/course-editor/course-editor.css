@@ -63,16 +63,16 @@ html,body{
     padding: 0;
 }
 
-.nav-link.active{
-    background-color: #393c3e;
-    color: #f3f3f3;
-}
+/*.nav-link.active{*/
+/*    background-color: #393c3e;*/
+/*    color: #f3f3f3;*/
+/*}*/
 
-.list-group-item.active{
-    background-color: #4891e4;
-    color: #c9ced0;
-    border-width: 10px;
-    border-left-width: 20px;
-    border-color: #383b3d;
-    padding-left: 30px;
-}
+/*.list-group-item.active{*/
+/*    background-color: #4891e4;*/
+/*    color: #c9ced0;*/
+/*    border-width: 10px;*/
+/*    border-left-width: 20px;*/
+/*    border-color: #383b3d;*/
+/*    padding-left: 30px;*/
+/*}*/

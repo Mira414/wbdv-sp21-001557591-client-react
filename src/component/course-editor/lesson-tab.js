@@ -6,6 +6,7 @@ import lessonService from "../../services/lesson-service"
 
 const LessonTab =({
                       lessons,
+                      findCourseById,
                       findLessonsForModule,
                       deleteLesson,
                       updateLesson,
@@ -13,37 +14,34 @@ const LessonTab =({
 
     const {layout, courseId, moduleId, lessonId} = useParams()
 
+
     useEffect(()=>{
-        findLessonsForModule(moduleId)
+        // if(moduleId !== "undefined" && typeof moduleId !== "undefined")
+            findLessonsForModule(moduleId)
         // console.log("find lessons " + lessons.length)
     }, [moduleId])
 
     return <>
-        <ul className="col-md-5 nav">
+        <ul className="nav nav-tabs">
             {
                 lessons.map(lesson=>
                 <li className={`nav-item ${lesson._id === lessonId? "active" : ""}`}>
-                    {/*<a className="nav-link wm-nav-link" aria-current="page" href="#">*/}
-                        <EditableItem
-                            to = {`/courses/${layout}/edit/${courseId}/${moduleId}/${lesson._id}`}
-                            key={lesson._id}
-                            deleteItem={deleteLesson}
-                            updateItem={updateLesson}
-                            item={lesson} />
-                    {/*</a>*/}
+                    <EditableItem
+                        to = {`/courses/${layout}/edit/${courseId}/${moduleId}/${lesson._id}`}
+                        key={lesson._id}
+                        deleteItem={deleteLesson}
+                        updateItem={updateLesson}
+                        item={lesson} />
                 </li>
                 )
             }
-        </ul>
-        <div className="">
-            <label>lesson {courseId} {moduleId}</label>
-            <a className="nav-link wm-nav-link"
+            <a className="nav-link"
                href="#"
                tabIndex="-1">
-                <i onClick={()=>createLesson(moduleId, {title: "new lesson"})}
+                <i onClick={()=>createLesson(moduleId, {title: "New Lesson"})}
                    className="fas fa-plus"></i>
             </a>
-        </div>
+        </ul>
     </>
 }
 
@@ -60,8 +58,11 @@ const dtmp = (dispatch)=>{
                 lesson: newLesson}
                 )
             ),
-        deleteLesson : (lesson)=>dispatch(
-            {type:"DELETE_LESSON", lessonToDelete: lesson}
+        deleteLesson :
+            (lesson)=> lessonService.deleteLesson(lesson._id).then(
+                dispatch(
+                    {type:"DELETE_LESSON", lessonToDelete: lesson}
+                    )
             ),
         updateLesson : (lesson)=>
             lessonService.updateLesson(lesson._id, lesson).then(

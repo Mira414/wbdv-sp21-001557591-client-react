@@ -7,16 +7,19 @@ import "./course-editor.css";
 import moduleReducer from "../../reducer/module-reducer";
 import lessonReducer from "../../reducer/lesson-reducer";
 import topicReducer from "../../reducer/topic-reducer";
+import widgetReducer from "../../reducer/widget-reducer";
 
 import ModuleList from "./module-list";
 import LessonTab from "./lesson-tab";
 import TopicPill from "./topic-pill";
+import WidgetList from "./widgets/widget-list";
 
 
 const reducers = combineReducers({
     moduleReducer : moduleReducer,
     lessonReducer: lessonReducer,
-    topicReducer : topicReducer
+    topicReducer : topicReducer,
+    widgetReducer
 })
 
 const store = createStore(reducers)
@@ -39,6 +42,7 @@ const CourseEditor = () => {
                         <div className="">
                             <TopicPill />
                             content was intentionally blank
+                            <WidgetList />
                         </div>
                     </div>
                 </div>

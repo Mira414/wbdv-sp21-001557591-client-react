@@ -17,7 +17,8 @@ const App = () =>{
                         "/courses/:layout/edit/:courseId",
                         "/courses/:layout/edit/:courseId/:moduleId",
                         "/courses/:layout/edit/:courseId/:moduleId/:lessonId",
-                        "/courses/:layout/edit/:courseId/:moduleId/:lessonId/:topicId"
+                        "/courses/:layout/edit/:courseId/:moduleId/:lessonId/:topicId",
+                        "/courses/:layout/edit/:courseId/:moduleId/:lessonId/:topicId/:widgetId"
             ]}
                    exact={true}
                    component={CourseEditor}></Route>

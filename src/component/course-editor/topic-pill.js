@@ -27,6 +27,7 @@ const TopicPill =({topics,
                         <EditableItem
                             key = {topic._id}
                             to = {`/courses/${layout}/edit/${courseId}/${moduleId}/${lessonId}/${topic._id}`}
+                            // to = {`/courses/${layout}/edit/${courseId}/${moduleId}/${lessonId}/topic1`}
                             item={topic}
                             deleteItem={deleteTopic}
                             updateItem={updateTopic}/>

@@ -22,7 +22,7 @@ const EditableItem =(
                 {item.title}
             </Link>
             <i onClick={()=>setEditing(true)}
-               className="fas fa-edit float-right"></i>
+               className="fas fa-edit wm-editor float-right"></i>
         </>}
 
         {editing &&

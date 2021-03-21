@@ -39,9 +39,8 @@ const CourseEditor = () => {
                     <div className="container-fluid">
                         <div><br /></div>
                         <LessonTab />
-                        <div className="">
+                        <div>
                             <TopicPill />
-                            content was intentionally blank
                             <WidgetList />
                         </div>
                     </div>

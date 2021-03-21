@@ -1,5 +1,6 @@
 const initState={
-    widgets: []
+    widgets: [],
+    editingWidget : {}
 }
 
 const widgetReducer = (preState = initState, action)=>{
@@ -15,6 +16,11 @@ const widgetReducer = (preState = initState, action)=>{
                 ...preState,
                 widgets: action.widgets
             }
+        case "SET_SELECTED_WIDGET":
+            return {
+                ...preState,
+                editingWidget: action.widget
+            }
         case "CREATE_WIDGET":
             return {
                 ...preState,
@@ -24,12 +30,12 @@ const widgetReducer = (preState = initState, action)=>{
             return {
                 ...preState,
                 widgets:
-                    preState.widgets.map(widget => widget.id === action.widget.id? action.widget : widget)
+                    preState.widgets.map(widget => widget.id === action.widgetId? action.widget : widget)
             }
         case "DELETE_WIDGET":
             return {
                 ...preState,
-                widgets: preState.widgets.filter(widget => widget.id === action.widget.id? false : true)
+                widgets: preState.widgets.filter(widget => widget.id === action.widgetId? false : true)
             }
         default:  return preState
     }

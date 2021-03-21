@@ -1,0 +1,25 @@
+.wm-widget{
+   margin-top: 10px;
+}
+
+.wm-ul{
+    border: 0px solid silver;
+    list-style: none;
+    border-width: 0 0 1px 1px;
+    padding-left: 0px;
+}
+
+.wm-li{
+    border: 0px solid silver;
+    border-width: 1px 1px 0 0;
+    padding: 0.5em;
+}
+
+ul.wm-create-holder::before{
+    color : white;
+}
+
+.wm-select{
+    width: 50%;
+    margin-bottom: 5px;
+}

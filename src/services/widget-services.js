@@ -1,4 +1,5 @@
-const REMOTE_URL = process.env.REACT_APP_WIDGET_URL
+// const REMOTE_URL = process.env.REACT_APP_WIDGET_URL
+const REMOTE_URL = "https://sp21-02-wangm-client-java.herokuapp.com"
 
 const TOPIC_URL=`${REMOTE_URL}/topics`
 
@@ -15,7 +16,7 @@ const findWidgetsForTopic = (topicId)=>{
 }
 
 const createWidget = (topicId, widget)=>{
-    console.log("servise topic id "+ topicId)
+    console.log("server url "+ `${TOPIC_URL}/${topicId}/widgets`)
     return fetch(`${TOPIC_URL}/${topicId}/widgets`, {
         method : 'POST',
         body : JSON.stringify(widget),

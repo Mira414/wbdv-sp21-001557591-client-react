@@ -1,6 +1,8 @@
-const TOPIC_URL="https://sp21-02-wangm-client-java.herokuapp.com:8080/api/topics"
+const REMOTE_URL = process.env.REACT_APP_WIDGET_URL
 
-const WIDGET_URL = "https://sp21-02-wangm-client-java.herokuapp.com:8080/api/widgets"
+const TOPIC_URL=`${REMOTE_URL}/topics`
+
+const WIDGET_URL = `${REMOTE_URL}/widgets`
 
 const findAllWidgets =()=>{
     return fetch(`${WIDGET_URL}`)

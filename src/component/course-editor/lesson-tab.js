@@ -12,18 +12,25 @@ const LessonTab =({
                       updateLesson,
                       createLesson})=>{
 
-    const {layout, courseId, moduleId, lessonId} = useParams()
+    let {layout, courseId, moduleId, lessonId} = useParams()
 
 
     useEffect(()=>{
-        // if(moduleId !== "undefined" && typeof moduleId !== "undefined")
+        if(moduleId !== "undefined" && typeof moduleId !== "undefined"){
+            console.log("moduleId is not null")
             findLessonsForModule(moduleId)
-        // console.log("find lessons " + lessons.length)
+        }
+        else{
+            console.log("moduleId is undefined")
+            lessons = []
+        }
+        console.log("find lessons " + lessons.length)
     }, [moduleId])
 
     return <>
         <ul className="nav nav-tabs">
             {
+                // console.log("lessons =" + lessons.length)
                 lessons.map(lesson=>
                 <li className={`nav-item ${lesson._id === lessonId? "active" : ""}`}>
                     <EditableItem

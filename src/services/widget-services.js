@@ -1,6 +1,6 @@
-const TOPIC_URL="http://localhost:8080/api/topics"
+const TOPIC_URL="https://sp21-02-wangm-client-java.herokuapp.com:8080/api/topics"
 
-const WIDGET_URL = "http://localhost:8080/api/widgets"
+const WIDGET_URL = "https://sp21-02-wangm-client-java.herokuapp.com:8080/api/widgets"
 
 const findAllWidgets =()=>{
     return fetch(`${WIDGET_URL}`)

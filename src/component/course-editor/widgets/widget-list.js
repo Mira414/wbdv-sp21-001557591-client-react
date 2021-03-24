@@ -18,14 +18,18 @@ const WidgetList =({
                        updateWidget,
                        deleteWidget})=>{
 
-    const {topicId} = useParams()
+    const {moduleId, lessonId, topicId} = useParams()
 
     // console.log("topic id "+ topicId)
 
     useEffect(()=>{
         // findAllWidgets()
-        findWidgetsForTopic(topicId)
-    }, [topicId])
+        if(topicId !== "undefined" && typeof topicId !== "undefined"){
+            findWidgetsForTopic(topicId)
+        }else{
+            findWidgetsForTopic(null)
+        }
+    }, [moduleId, lessonId, topicId])
 
     const [editing, setEditing] = useState(false)
     const [cachedWidget, setCachedWidget] = useState({})

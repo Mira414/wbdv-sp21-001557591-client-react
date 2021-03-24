@@ -10,14 +10,14 @@ const TopicPill =({topics,
                   updateTopic,
                   deleteTopic})=>{
 
-    let {layout, courseId, moduleId, lessonId, topicId} = useParams()
+    const {layout, courseId, moduleId, lessonId, topicId} = useParams()
 
     useEffect(()=>{
         if(lessonId !== "undefined" && typeof lessonId !== "undefined"
             && moduleId !== "undefined" && typeof moduleId !== "undefined"){
             findTopicsForLesson(lessonId)}
         else{
-            lessonId = ""
+            findTopicsForLesson(null)
         }
         // }
     }, [lessonId, moduleId])

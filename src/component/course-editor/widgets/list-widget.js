@@ -27,6 +27,7 @@ const ListWidget=({edit, setSelectedWidget, wt})=>{
                         }
                         }
                         rows="8"
+                        placeholder="Enter one list item per line"
                         className="form-control">
                     </textarea>
                 </div>

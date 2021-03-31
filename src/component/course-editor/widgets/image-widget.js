@@ -27,6 +27,7 @@ const ImageWidget=({edit, setSelectedWidget, wt})=>{
                             })
                         }
                         }
+                        placeholder="Image URL"
                         className="form-control"/>
 
                     <label for="image-width" className="label">Image width</label>

@@ -7,6 +7,8 @@ import "./widget.css"
 import widgetServices from "../../../services/widget-services"
 import HeadingWidget from "./heading-widget";
 import ParagraphWidget from "./paragraph-widget";
+import ListWidget from "./list-widget";
+import ImageWidget from "./image-widget";
 
 const WidgetList =({
                        widgets,
@@ -39,7 +41,14 @@ const WidgetList =({
                 <h6 className="col-11">widget list</h6>
                 <i
                     className="fa fa-plus fa-2x float-right"
-                    onClick={()=>createWidget(topicId, {type:"Heading", text: "header text", size: 1})}></i>
+                    onClick={()=> {
+                        if(topicId !== "undefined" && typeof topicId !== "undefined"){
+                            createWidget(topicId, {type: "Heading", text: "header text", size: 1})
+                        }else{
+                            alert("please choose a topic first")
+                            console.log("couldn't create widget, coz topic id is undefined")
+                        }
+                    }}></i>
             </div>
         <ul className="wm-ul">
             {
@@ -60,10 +69,10 @@ const WidgetList =({
                                         }}>
                                         <option value="Heading">Heading</option>
                                         <option value="Paragraph">Paragraph</option>
-                                        <option value="Video">Video</option>
                                         <option value="Image">Image</option>
-                                        <option value="Link">Link</option>
                                         <option value="List">List</option>
+                                        <option value="Video">Video</option>
+                                        <option value="Link">Link</option>
                                         <option value="HTML">HTML</option>
                                     </select>
 
@@ -118,6 +127,38 @@ const WidgetList =({
                                 wt = {selectedWidget}
                                 edit={selectedWidget.id === widget.id}
                                 />
+                            }
+                            {
+                                selectedWidget.id !== widget.id && widget.type === "List" &&
+                                // console.log("widget text not selected" + widget.text)
+                                <ListWidget
+                                    key={widget.id}
+                                    edit={selectedWidget.id === widget.id}
+                                    wt={widget}/>
+                            }
+                            {
+                                selectedWidget.id === widget.id && selectedWidget.type === "List" &&
+                                // console.log("widget text selected" + widget.text)
+                                <ListWidget
+                                    key={widget.id}
+                                    edit={selectedWidget.id === widget.id}
+                                    wt={selectedWidget}/>
+                            }
+                            {
+                                // console.log("widget type " + widget.type)
+                                selectedWidget.id !== widget.id && widget.type === "Image" &&
+                                <ImageWidget
+                                    key={widget.id}
+                                    edit={selectedWidget.id === widget.id}
+                                    wt={widget}/>
+                            }
+                            {
+                                // console.log("widget type " + widget.type)
+                                selectedWidget.id === widget.id && selectedWidget.type === "Image" &&
+                                <ImageWidget
+                                    key={widget.id}
+                                    edit={selectedWidget.id === widget.id}
+                                    wt={selectedWidget}/>
                             }
                         </li>
                 )

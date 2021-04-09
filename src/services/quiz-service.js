@@ -1,12 +1,13 @@
 
-const QUIZZES_URL=`${process.env.REACT_APP_QUIZ_URL}/quizzes`
+// const QUIZZES_URL=`${process.env.REACT_APP_QUIZ_URL}/quizzes`
+const QUIZZES_URL=process.env.REACT_APP_QUIZ_URL
 
 const findAllQuizzes = ()=>{
-    return fetch(QUIZZES_URL).then(response=>response.json())
+    return fetch(`${QUIZZES_URL}/quizzes`).then(response=>response.json())
 }
 
 const findQuizById = (qId)=>{
-    return fetch(`${QUIZZES_URL}/${qId}`).then(res=>res.json())
+    return fetch(`${QUIZZES_URL}/quizzes/${qId}`).then(res=>res.json())
 }
 
 const createQuiz = ()=>{}

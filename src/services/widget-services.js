@@ -1,6 +1,6 @@
-// const REMOTE_URL = process.env.REACT_APP_WIDGET_URL
+const REMOTE_URL = process.env.REACT_APP_WIDGET_URL
 // const REMOTE_URL = "https://sp21-02-wangm-client-java.herokuapp.com/api"
-const REMOTE_URL = "http://localhost:8080/api"
+// const REMOTE_URL = "http://localhost:8080/api"
 
 const TOPIC_URL=`${REMOTE_URL}/topics`
 

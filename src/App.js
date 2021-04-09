@@ -6,6 +6,8 @@ import Home from "./component/home"
 import {BrowserRouter, Route} from "react-router-dom";
 import CounterReact from "./component/counter/react-state/counter-react";
 import CounterRedux from "./component/counter/redux-state/counter-redux";
+import QuizList from "./component/quiz/quiz-list";
+import Quiz from "./component/quiz/quiz";
 
 const App = () =>{
   return (
@@ -22,6 +24,8 @@ const App = () =>{
             ]}
                    exact={true}
                    component={CourseEditor}></Route>
+            <Route path="/courses/:courseId/quizzes" exact={true} component={QuizList}></Route>
+            <Route path="/courses/:courseId/quizzes/:quizId" exact={true} component={Quiz}></Route>
             <Route path="/counter/react" component={CounterReact}></Route>
             <Route path="/counter/redux" component={CounterRedux}></Route>
         </div>

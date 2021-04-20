@@ -1,16 +1,22 @@
 import React, {useState, useEffect} from "react"
 import {Link, useParams} from "react-router-dom";
+import {connect} from "react-redux"
 
 import quizService from "../../services/quiz-service"
 
-const QuizList = ()=>{
+const QuizList = ({
+                      quizzes,
+                      findAllQuizzes,
+                      findQuizById
+                  })=>{
 
-    const [quizzes, setQuizzes] = useState([])
+    // const [quizzes, setQuizzes] = useState([])
 
     const {courseId} = useParams()
 
     useEffect(()=>{
-        quizService.findAllQuizzes().then(quizzes=>setQuizzes(quizzes))
+        // quizService.findAllQuizzes().then(quizzes=>setQuizzes(quizzes))
+        findAllQuizzes()
     }, [])
 
     return <div className="container-fluid">
@@ -43,7 +49,8 @@ const stpm = (state)=>{
 const dtmp = (dispatch)=>{
     return {
         findAllQuizzes : ()=>{
-            quizService.findAllQuizzes().then(quizzes=>dispatch({type: "FIND_ALL_QUIZZES", quizzes}))
+            quizService.findAllQuizzes()
+                .then(quizzes=>dispatch({type: "FIND_ALL_QUIZZES", quizzes}))
         },
         findQuizById : (quizId)=>{
             quizService.findQuizById(quizId)
@@ -52,5 +59,5 @@ const dtmp = (dispatch)=>{
     }
 }
 
-// export default connect(stpm, dtmp)(QuizList)
-export default QuizList
+export default connect(stpm, dtmp)(QuizList)
+// export default QuizList

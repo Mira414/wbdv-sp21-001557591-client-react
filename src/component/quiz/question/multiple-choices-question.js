@@ -1,44 +1,30 @@
 import React, {useState} from 'react'
 
-const MultipleChoicesQuestion = ({question})=>{
+const MultipleChoicesQuestion = ({question, updateAttempt})=>{
 
-    const [answer, setAnswer] = useState("")
+    // const [answer, setAnswer] = useState("")
 
-    const [gradeOrNot, setGradeOrNot] = useState(false)
+    // const [gradeOrNot, setGradeOrNot] = useState(false)
 
     return <div>
-        <h4>{question.question} {gradeOrNot}
-        {
-            gradeOrNot && answer !== 'undefined' && answer !=="" && answer === question.correct &&
-            <i className="fas fa-check text-success"></i>
-        }
-        {
-            gradeOrNot && answer !== 'undefined' && answer !=="" && answer !== question.correct &&
-            <i className="fas fa-times text-danger"></i>
-        }
-        </h4>
+        <h4>{question.question}</h4>
         <ul className="list-group">
             {
                 question.choices.map(choice=>
-                    <li className={`list-group-item 
-                        ${gradeOrNot && choice === question.correct? "list-group-item-success" : ""}
-                        ${gradeOrNot && answer !==question.correct && choice === answer? "list-group-item-danger" : ""} 
-                    `} key={choice}>
+                    <li className="list-group-item" key={choice}>
                         <label>
                             <input
                                 type="radio"
                                 name={question._id}
-                                onClick={()=>setAnswer(choice)}/> {choice}
+                                onClick={()=>updateAttempt({...question, answer: choice})}/> {choice}
                         </label>
-                            {gradeOrNot && choice === question.correct? <i className="fas fa-check float-right"></i> : <></>}
-                            {gradeOrNot && answer !==question.correct && choice === answer? <i className="fas fa-times float-right"></i> : <></>}
                     </li>)
             }
         </ul>
         <br />
-        <label>Your answer: {answer}</label>
+        {/*<label>Your answer: {answer}</label>*/}
         <br />
-        <i className="btn btn-success" onClick={()=>setGradeOrNot(true)}>Grade</i>
+        {/*<i className="btn btn-success" onClick={()=>setGradeOrNot(true)}>Grade</i>*/}
 
 
     </div>
